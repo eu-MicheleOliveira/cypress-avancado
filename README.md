@@ -3,6 +3,8 @@
 
 > :construction: Projeto em construção :construction:
 
+
+<h2 align="center"> Testes de API </h2>>
 DocumentAtion
 Welcome to the Breaking Bad API! This documentation should supply with you all the information you need to start making your HTTP requests. Give our documentation a read before you get started on your project, and don't forget about the ice trays!
 
@@ -13,3 +15,10 @@ This API is free, I have no intention of creating authentication. However, to pr
 
 Base Url
 https://www.breakingbadapi.com/api/
+
+<h2 align="center"> Testes de Front </h2>>
+
+Para fazer a instalação do Cypress, vamos usar o comando npm i cypress --save -include=dev. Esse parâmetro -include=dev é para indicar que é uma dependência de desenvolvimento.
+
+Pode ser que nessa primeira vez ele demore um pouco para abrir, ele já indica para nós que ele está rodando o script npx cypress open
+
