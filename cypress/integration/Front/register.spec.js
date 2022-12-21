@@ -7,8 +7,6 @@ describe('To register on demo site', function () {
             cy.visit('https://alura-fotos.herokuapp.com/#/home')
             cy.contains('Login').should('be.visible')
 
-
-
         })
 })
 
