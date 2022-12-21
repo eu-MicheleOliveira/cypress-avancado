@@ -1,10 +1,8 @@
-const locators ={
+const locators = {
 
-
-    REGISTER:{
+    REGISTER: {
         site: 'alura-fotos.herokuapp.com',
-        xp_userName: '/html/body/app-root/ng-component/div/div/div[2]/ng-component/form/div[1]/input'
+        user_name: 'input[placeholder="user name"]"',
+        password: 'input[placeholder="password"]"'
     }
-
-
 }
