@@ -1,8 +1,13 @@
 const locators = {
 
-    REGISTER: {
+    LOGIN: {
         site: 'alura-fotos.herokuapp.com',
-        user_name: 'input[placeholder="user name"]"',
-        password: 'input[placeholder="password"]"'
+        user_name: 'input[placeholder="user name"]',
+        password: 'input[placeholder="password"]'
+
+    },
+
+    REGISTER: {
+
     }
 }
