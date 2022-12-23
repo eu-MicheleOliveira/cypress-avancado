@@ -2,7 +2,7 @@ const locators = {
 
     LOGIN: {
         site: 'alura-fotos.herokuapp.com',
-        user_name: 'input[placeholder="user name"]',
+        user_name: ':nth-child(1) > .form-control',
         password: 'input[placeholder="password"]'
 
     },
@@ -11,3 +11,5 @@ const locators = {
 
     }
 }
+
+export default locators
