@@ -13,7 +13,6 @@ describe('To register on demo site', function () {
         cy.get(':nth-child(4) > .form-control').type('password')
         cy.get('.btn').click()
         cy.wait(154545)
-
     })
 })
 

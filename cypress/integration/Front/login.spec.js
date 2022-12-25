@@ -1,6 +1,5 @@
 /// <reference types="cypress"/>
 import locators from '../../support/locators'
-
 describe('Log in', function () {
     beforeEach(() => {
         cy.visit('https://alura-fotos.herokuapp.com/#/home')
@@ -14,7 +13,6 @@ describe('Log in', function () {
         cy.get(':nth-child(2) > ap-vmessage > .text-danger').should('text', 'Password is required!')
         cy.get('.btn').click({ force: true })
     })
-
     it('Log in successfully', function () {
         cy.get(':nth-child(1) > .form-control').type('michele')
         cy.get(':nth-child(2) > .form-control').type('senha123')
