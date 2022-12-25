@@ -1,11 +1,10 @@
-describe('Login e registro de usuarios alura pic', () => {
+describe('Error validation', () => {
 
     beforeEach(() => {
       cy.visit('https://alura-fotos.herokuapp.com')
-
      })
 
-    it('verifica mensagens validacao', () => {
+    it('check validation messages', () => {
         cy.contains('a', 'Register now').click();
         cy.contains('button', 'Register').click();
         cy.contains('ap-vmessage', 'Email is required!').should('be.visible');
@@ -15,7 +14,7 @@ describe('Login e registro de usuarios alura pic', () => {
         cy.contains('ap-vmessage', 'Full name is required!').should('be.visible');
     })
 
-    it('verifica mensagens de email invalido', () => {
+    it('check invalid email messages', () => {
         cy.contains('a', 'Register now').click();
         cy.contains('button', 'Register').click();
         cy.get('input[formcontrolname="email"]').type('jacqueline');
@@ -23,7 +22,7 @@ describe('Login e registro de usuarios alura pic', () => {
      
     })
 
-    it('verifica mensagens de senha com menos de 8 caracteres', () => {
+    it('checks password messages with less than 8 characters', () => {
         cy.contains('a', 'Register now').click();
         cy.contains('button', 'Register').click();
         cy.get('input[formcontrolname="password"]').type('123');
