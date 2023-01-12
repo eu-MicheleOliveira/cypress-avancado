@@ -1,29 +1,29 @@
-name: Execução automação de testes
+name: Execution
 
 on:
   workflow_dispatch:
     inputs:
       amb:
-        description: 'Selecionar algum destes ambientes: dev / hlg / prd'
+        description: 'Select an environment, for example: dev / hlg / prd'
         required: false
         default: 'hlg'
       browser:
-        description: 'Selecionar algum destes browsers: chrome / electron'
+        description: 'Select a browser, for example: chrome / electron'
         required: false
         default: 'chrome'
       tag:
-        description: 'Selecionar alguma tag, por exemplo: @regressivo / @smoke / @login'
+        description: 'Select a tag, for example: @regression / @smoke / @login'
         required: false
-        default: '@regressivo'
+        default: '@regression'
   pull_request:
     branches: [ master, release/develop ]
-  schedule:
-    - cron: "0 0 * * *"
+  # schedule:
+  #  - cron: "0 0 * * *"
     
 env:
   DEFAULT_AMB: "hlg"
   DEFAULT_BROWSER: "chrome"
-  DEFAULT_TAG: "@regressivo"
+  DEFAULT_TAG: "@regression"
 
 jobs:
   test:
@@ -31,11 +31,17 @@ jobs:
     runs-on: ubuntu-latest
     container: cypress/browsers:node14.16.0-chrome90-ff88
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Write the cypress.env.json file
+        run: |
+          echo '${{ secrets.CYPRESS_ENV_CI }}' > cypress.env.json
+      
       - name: Cypress run 
         uses: cypress-io/github-action@v2
         with: 
-          command: npx cypress run --config-file config/${{github.event.inputs.amb || env.DEFAULT_AMB}}.json --browser ${{github.event.inputs.browser || env.DEFAULT_BROWSER}} --env grepTags=${{github.event.inputs.tag || env.DEFAULT_TAG}}
+          command: npx cypress run --record --key 4c9b67e2-5cde-4b92-99b4-842e1a8801cd --config-file config/${{github.event.inputs.amb || env.DEFAULT_AMB}}.json --browser ${{github.event.inputs.browser || env.DEFAULT_BROWSER}} --env grepTags=${{github.event.inputs.tag || env.DEFAULT_TAG}}
       - name: Generate Allure Report
         uses: simple-elf/allure-report-action@master
         if: always()
